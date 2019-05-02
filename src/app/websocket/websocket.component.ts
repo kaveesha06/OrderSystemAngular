@@ -17,6 +17,7 @@ export class WebsocketComponent implements OnInit {
 
   connectSocket() {
     this.websocketService.messages.subscribe(message => {
+      console.log('okay');
       console.log(message);
     });
   }

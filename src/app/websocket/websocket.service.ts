@@ -44,9 +44,9 @@ export class WebsocketService {
         this.ws.onmessage = obs.next.bind(obs);
         this.ws.onerror = obs.error.bind(obs);
         this.ws.onclose = obs.complete.bind(obs);
-        this.ws.onopen = () => {
+        /**this.ws.onopen = () => {
           this.messages.next(JSON.stringify({ op: 'Connected To WebSocket' }));
-        };
+        };**/
         return this.ws.close.bind(this.ws);
       }
     );
@@ -63,11 +63,11 @@ export class WebsocketService {
 
   initializeWebsocket() {
     /**const url = 'http://127.0.0.1:8060/server/config';**/
-    this.messages =  < Subject<any>> this.connect('ws://127.0.0.1:8080/endpoint')
+    this.messages =  < Subject<any>> this.connect('ws://localhost:8080/socket/chat')
       .pipe(map(response => {
-        console.log('okay');
-        const data = JSON.parse(response.data);
-        return data;
+        /**const data = JSON.parse(response.data);**/
+        console.log(response.data);
+        /** return data;**/
         }
       ));
     //

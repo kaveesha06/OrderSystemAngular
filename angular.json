@@ -82,7 +82,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [ "node_modules/stompjs/lib/stomp-node.js"],
             "assets": [
               "src/favicon.ico",
               "src/assets"
