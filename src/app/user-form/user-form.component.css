@@ -1,0 +1,15 @@
+form{
+    padding-top: 0px;
+   
+    
+}
+.card bg-dark my-5{
+    padding: 0px;
+    
+}.card-body{
+    padding-top: 0px;
+   
+}
+input[type=checkbox] {
+  transform: scale(1.5);
+}

@@ -1,0 +1,122 @@
+
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #orderParamForm="ngForm" class="form-horizontal">
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="orderChannel" class="col-sm-3 form-control-label">Order Channel</label>
+          <!--<label for="orderChannel"></label>-->
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.orderChannel" class="form-control" id="orderChannel"  name ="orderChannel" (change)="onSubmit()"
+                   #orderChannel="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+        <label for="price" class="col-sm-3 form-control-label">Price</label>
+          <div class="col-sm-9">
+           <input type="text" [(ngModel)]="orderParam && orderParam.price" class="form-control" id="price"  name="price" (change)="onSubmit()"
+               required #stringPrice="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="type" class="col-sm-3 form-control-label">Type</label>
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.type" class="form-control" id="type"  name="type" (change)="onSubmit()"
+                   required #type="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="symbol" class="col-sm-3 form-control-label">Symbol</label>
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.symbol" class="form-control" id="symbol"  name="symbol" (change)="onSubmit()"
+                   required #symbol="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="tenantCode" class="col-sm-3 form-control-label">Tenant Code</label>
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.tenantCode" class="form-control" id="tenantCode"  name="tenantCode" (change)="onSubmit()"
+                   required #tenantCode="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="marketCode" class="col-sm-3 form-control-label">Market Code</label>
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.marketCode" class="form-control" id="marketCode"  name="marketCode" (change)="onSubmit()"
+                   required #marketCode="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="exchange" class="col-sm-3 form-control-label">Exchange</label>
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.exchange" class="form-control" id="exchange"  name="exchange" (change)="onSubmit()"
+                   required #exchange="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="side" class="col-sm-3 form-control-label">Side</label>
+          <div class="col-sm-9">
+            <input type="number" [(ngModel)]="orderParam && orderParam.side" class="form-control" id="side"  name="side" (change)="onSubmit()"
+                   required #side="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="orderMode" class="col-sm-3 form-control-label">Order Mode</label>
+          <div class="col-sm-9">
+            <input type="number" [(ngModel)]="orderParam && orderParam.orderMode" class="form-control" id="orderMode"  name="orderMode" (change)="onSubmit()"
+                   required #orderMode="ngModel">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-group row">
+          <label for="dealerID" class="col-sm-3 form-control-label">Dealer ID</label>
+          <div class="col-sm-9">
+            <input type="text" [(ngModel)]="orderParam && orderParam.dealerID" class="form-control" id="dealerID"  name="dealerID" (change)="onSubmit()"
+                   required #dealerID="ngModel">
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-md-6">
+
+          <button type="submit" [disabled]="!orderParamForm.form.valid" class="btn btn-info">Configure</button>
+        </div>
+        <div class="col-md-6">
+
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<br>
+<div class="stats-3-block block d-flex">
+        <div class="stats-3"><strong class="d-block">{{this.totalNoOfOrders}}</strong><span class="d-block">Total Requests</span>
+          <!-- <div class="progress progress-template progress-small">
+            <div role="progressbar" style="width: 35%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template progress-bar-small dashbg-1"></div>
+          </div> -->
+        </div>
+        <div class="stats-3 d-flex justify-content-between text-center">
+          <div class="item"><strong class="d-block strong-sm">{{this.responseTime}}</strong><span class="d-block span-sm">Time(s)</span>
+            <!-- <div class="line"></div><small>+246</small> -->
+          </div>
+          <div class="item"><strong class="d-block strong-sm">{{this.totalNoOfOrders-this.responseCount}}</strong><span class="d-block span-sm">Pending</span>
+            <!-- <div class="line"></div><small>+416</small> -->
+          </div>
+        </div>
+      </div>
+
+<div class="statistic-block block">
+    <div class="progress-details d-flex align-items-end justify-content-between">
+      <div class="title">
+        <!-- <div class="icon"><i class="icon-user-1"></i></div> -->
+        <strong>Responses</strong>
+      </div>
+      <div class="number dashtext-1">{{this.responseCount}}</div>
+    </div>
+    <div class="progress progress-template">
+        <div role="progressbar" [style.width]="this.percentage + '%'" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
+    </div>
+  </div>
+<button type="submit" value="Click" class="btn btn-info" (click) ="connect()">Reconnect</button>&nbsp;&nbsp;
+<button type="submit" value="Click" class="btn btn-info" (click) ="order()">Place Order</button>&nbsp;&nbsp;
+<button type="submit" value="Click" class="btn btn-info" (click) ="clear()">Clear</button>
+<div><br></div>
+
+<div id="scroll" style="overflow-y:scroll; height:400px;">
+<p-table [value]="messages" >
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Response</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-message>
+      <tr>
+        <td>{{message}}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+</div>

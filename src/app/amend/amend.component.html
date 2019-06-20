@@ -1,0 +1,152 @@
+<!--<app-websocket></app-websocket>-->
+<header class="header">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <div class="navbar-header">
+        <!-- Navbar Header--><a href="index.html" class="navbar-brand">
+        <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Order </strong><strong>system</strong></div>
+        <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
+        <!-- Sidebar Toggle Btn-->
+
+
+
+
+
+        <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+      </div>
+    </div>
+    <!--<div class="list-inline-item logout"> <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link"> Login </a> </div>-->
+    <!--<div class="list-inline-item logout"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></div>-->
+  </nav>
+</header>
+<div class="d-flex align-items-stretch" >
+  <nav id="sidebar" >
+    <!-- Sidebar Header-->
+
+    <!-- Sidebar Navidation Menus-->
+    <ul class="list-unstyled">
+      <li><a routerLink="/users">Create Orders </a></li>
+      <li><a  routerLink="/Amend"> Amend/Cancel Orders </a></li>
+      <!--<li><a href="charts.html">Cancel Orders </a></li>-->
+      <li><a routerLink="/JMS"> JMS Send</a></li>
+      <!--<li><a href="forms.html"> amendOrder List </a></li>-->
+
+    </ul>
+  </nav>
+  <div class="page-content">
+    <div class="page-header">
+      <div class="container-fluid">
+        <h2 class="h5 no-margin-bottom">Dashboard</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card my-5">
+          <div class="card-body">
+            <h2>Amend Order</h2><br>
+            <form (ngSubmit)="onSubmit()" #amendOrderForm="ngForm" class="form-horizontal">
+              <div class="form-group">
+                <div class="form-group row">
+                  <label for="clOrdID" class="col-sm-3 form-control-label">ClOrderID</label>
+                  <!--<label for="orderChannel"></label>-->
+                  <div class="col-sm-9">
+                    <input type="text" [(ngModel)]="amendOrder && amendOrder.clOrdID" class="form-control" id="clOrdID"  name ="clOrdID"
+                           #clOrdID="ngModel">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group row">
+                  <label for="orderQty" class="col-sm-3 form-control-label">Order Quantity</label>
+                  <div class="col-sm-9">
+                    <input type="number" [(ngModel)]="amendOrder && amendOrder.orderQty" class="form-control" id="orderQty"  name="orderQty"
+                           required #orderQty="ngModel">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group row">
+                  <label for="price" class="col-sm-3 form-control-label">Price</label>
+                  <div class="col-sm-9">
+                    <input type="text" [(ngModel)]="amendOrder && amendOrder.price" class="form-control" id="price"  name="price"
+                           required #price="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="submit" [disabled]="!amendOrderForm.form.valid" (click) ="order()" class="btn btn-info">Configure</button>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
+        <div class="card my-5">
+          <div class="card-body">
+            <h2>Cancel Order</h2><br>
+            <form (ngSubmit)="onCancel()" #cancelOrderForm="ngForm" class="form-horizontal">
+              <div class="form-group">
+                <div class="form-group row">
+                  <label for="clOrdID" class="col-sm-3 form-control-label">ClOrderID</label>
+                  <!--<label for="orderChannel"></label>-->
+                  <div class="col-sm-9">
+                    <input type="text" [(ngModel)]="cancelOrder && cancelOrder.clOrdID" class="form-control" id="cancelOrder"  name ="clOrdID"
+                           #clOrdID="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="submit" [disabled]="!cancelOrderForm.form.valid" (click) ="order()" class="btn btn-info">Configure</button>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+      <div class="col-md-6">
+        <br><br>
+        <div class="statistic-block block">
+          <div class="progress-details d-flex align-items-end justify-content-between">
+            <div class="title">
+              <!-- <div class="icon"><i class="icon-user-1"></i></div> -->
+              <strong>Responses</strong>
+            </div>
+          </div>
+
+        </div>
+        <!--<div id="scroll" style="overflow-y:scroll; height:400px;">-->
+        <div id="scroll" style="overflow-y:scroll; height:400px;">
+          <p-table [value]="messages" >
+
+            <ng-template pTemplate="header">
+              <tr>
+                <!--<th>Response</th>-->
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-message>
+              <tr>
+                <td>{{message}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

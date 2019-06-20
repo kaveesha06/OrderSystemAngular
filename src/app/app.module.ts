@@ -1,35 +1,53 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {TableModule} from 'primeng/table';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { TrialComponent } from './trial/trial.component';
-import { WebsocketComponent } from './websocket/websocket.component';
-import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { UserService } from './user-service.service';
-import { OrdersComponent } from './orders/orders.component';
+import { UserService } from './_services/user-service.service';
 import { ResponseComponent } from './response/response.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { VirtualScrollModule } from 'angular2-virtual-scroll';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import {FileUploadModule} from 'ng2-file-upload';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ParamsComponent } from './params/params.component';
+import { JMSComponent } from './jms/jms.component';
+import { AmendComponent } from './amend/amend.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrialComponent,
-    WebsocketComponent,
-    UserListComponent,
     UserFormComponent,
-    OrdersComponent,
     ResponseComponent,
-    SidebarComponent
+    LoginComponent,
+    DashboardComponent,
+    RegisterComponent,
+    LogoutComponent,
+    ParamsComponent,
+    JMSComponent,
+    AmendComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    VirtualScrollModule,
+    ScrollingModule,
+    InfiniteScrollModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FileUploadModule,
+    TableModule
+   
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
