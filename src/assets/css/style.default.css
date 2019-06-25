@@ -225,7 +225,7 @@ pre {
   position: relative;
   background: #22252a;
   min-height: 100vh;
-  width: calc(100% - 280px);
+  width: calc(100% - 240px);
   padding: 0;
   padding-bottom: 70px;
 }
@@ -400,6 +400,7 @@ nav.navbar {
   padding-bottom: 20px;
   border-bottom: 1px solid #34373d;
   z-index: 10;
+  height: 60px;
 }
 
 nav.navbar .sidebar-toggle {
@@ -726,7 +727,7 @@ nav.navbar .dropdown .dropdown-menu.active {
 * ==========================================================
 */
 nav#sidebar {
-  width: 280px;
+  width: 240px;
   background: #2d3035;
   color: #6a6c70;
   border-right: 1px solid #34373d;
@@ -3395,6 +3396,7 @@ pre code {
   background-color: #2d3035;
   border: 1px solid #34373d;
   border-radius: 0;
+  margin-left: 20px;
 }
 
 .card > .list-group:first-child .list-group-item:first-child {
