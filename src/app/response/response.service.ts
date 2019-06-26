@@ -34,6 +34,8 @@ export class ResponseService {
     return this.http.get(this.urlPrefix+'/connect');
   }
 
-
+  stop(): Observable <any> {
+    return this.http.get(this.urlPrefix+'/stop');
+  }
 
 }

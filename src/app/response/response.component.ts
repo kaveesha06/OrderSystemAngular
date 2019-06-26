@@ -101,8 +101,13 @@ export class ResponseComponent implements OnInit {
     this.responseTime = 0;
     this.userService.findAll().subscribe(data => {
       this.users = data;
-      
-      this.totalNoOfOrders = this.users[this.users.length-1].noOfOrders;
+
+      if(this.responseCount <= this.users[this.users.length-1].noOfOrders) {
+        this.totalNoOfOrders = this.users[this.users.length - 1].noOfOrders;
+      }
+      else{
+        this.totalNoOfOrders = this.responseCount;
+      }
 
     });
     this.responseService.order().subscribe(params => {
@@ -156,7 +161,16 @@ export class ResponseComponent implements OnInit {
     this.subscription2.unsubscribe();
   }
 
-  connect(){
+  connect() {
     this.responseService.connect().subscribe();
+  }
+  stop(){
+    this.responseService.stop().subscribe();
+    this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
+    this.subscription3.unsubscribe();
+    // this.responseCount =0;
+    // this.responseTime =0;
+    this.totalNoOfOrders = this.responseCount;
   }
 }

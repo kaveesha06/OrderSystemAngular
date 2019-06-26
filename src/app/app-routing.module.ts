@@ -8,9 +8,9 @@ import {LogoutComponent} from './logout/logout.component';
 import {ParamsComponent} from './params/params.component';
 import {JMSComponent} from './jms/jms.component';
 import {AmendComponent} from './amend/amend.component';
-import {GatewayLoadTestComponent} from "./gateway-load-test/gateway-load-test.component";
-import {LayoutComponent} from "./layout/layout.component";
- 
+import {GatewayLoadTestComponent} from './gateway-load-test/gateway-load-test.component';
+import {LayoutComponent} from './layout/layout.component';
+
 const routes: Routes = [
   {
     path: 'users', component: LayoutComponent,
