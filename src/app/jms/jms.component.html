@@ -1,57 +1,63 @@
-<!--<app-websocket></app-websocket>-->
-<header class="header">
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-      <div class="navbar-header">
-        <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-        <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Order </strong><strong>system</strong></div>
-        <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
-        <!-- Sidebar Toggle Btn-->
-        <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
-      </div>
-    </div>
-    <!--<div class="list-inline-item logout"> <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link"> Login </a> </div>-->
-    <!--<div class="list-inline-item logout"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></div>-->
-  </nav>
-</header>
-<div class="d-flex align-items-stretch" >
-  <nav id="sidebar" >
-    <!-- Sidebar Header-->
-    <!-- Sidebar Navidation Menus-->
-    <ul class="list-unstyled">
-      <li><a  routerLink="/users">Create Orders </a></li>
-      <li><a  routerLink="/Amend"> Amend/Cancel Orders </a></li>
-      <li><a routerLink="/JMS"> JMS Send</a></li>
-      <!--<li><a href="forms.html"> OrderParam List </a></li>-->
-    </ul>
-  </nav>
-  <div class="page-content">
+<!--&lt;!&ndash;<app-websocket></app-websocket>&ndash;&gt;-->
+<!--<header class="header">-->
+  <!--<nav class="navbar navbar-expand-lg">-->
+    <!--<div class="container-fluid d-flex align-items-center justify-content-between">-->
+      <!--<div class="navbar-header">-->
+        <!--&lt;!&ndash; Navbar Header&ndash;&gt;<a href="index.html" class="navbar-brand">-->
+        <!--<div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Order </strong><strong>system</strong></div>-->
+        <!--<div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>-->
+        <!--&lt;!&ndash; Sidebar Toggle Btn&ndash;&gt;-->
+        <!--<button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="list-inline-item logout"> <a *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link"> Login </a> </div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="list-inline-item logout"><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></div>&ndash;&gt;-->
+  <!--</nav>-->
+<!--</header>-->
+<!--<div class="d-flex align-items-stretch" >-->
+  <!--<nav id="sidebar" >-->
+    <!--&lt;!&ndash; Sidebar Header&ndash;&gt;-->
+    <!--&lt;!&ndash; Sidebar Navidation Menus&ndash;&gt;-->
+    <!--<ul class="list-unstyled">-->
+      <!--<li><a  routerLink="/users">Create Orders </a></li>-->
+      <!--<li><a  routerLink="/Amend"> Amend/Cancel Orders </a></li>-->
+      <!--<li><a routerLink="/JMS"> JMS Send</a></li>-->
+      <!--&lt;!&ndash;<li><a href="forms.html"> OrderParam List </a></li>&ndash;&gt;-->
+    <!--</ul>-->
+  <!--</nav>-->
+  <div class="page-content" id="jms-container">
     <div class="page-header">
       <div class="container-fluid">
-        <h2 class="h5 no-margin-bottom">Dashboard</h2>
+        <h2 class="h5 no-margin-bottom">JMS Send</h2>
       </div>
     </div>
 
-    <input #fileInput type="file" ng2FileSelect [uploader]="uploader"/>
+    <div id="jms-core">
+
+      <input #fileInput type="file" ng2FileSelect [uploader]="uploader"/>
       <form (ngSubmit)="onSubmit()" #jmsForm="ngForm" class="form-horizontal" >
         <div> <br>
-        <select id="select-type-basic" [(ngModel)]="jms && jms.exchange" name = "exchange" [value]= exchange_values[0] >
-          <option *ngFor="let exchange_type of exchange_values">
-            {{exchange_type}}
-          </option>
-        </select>
+          <select id="select-type-basic" [(ngModel)]="jms && jms.exchange" name = "exchange" [value]= exchange_values[0] >
+            <option *ngFor="let exchange_type of exchange_values">
+              {{exchange_type}}
+            </option>
+          </select>
         </div>
         <div class="form-group">
-        <div class="form-group row">
-          <div class="col-sm-9">
-            <label for="jmsMessage" class="col-sm-3 form-control-label"></label>
-            <input type="text" [(ngModel)]="jms && jms.jmsMessage" class="form-control" name ="jmsMessage" id="jmsMessage" #jmsMessage="ngModel">
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <label for="jmsMessage" class="col-sm-3 form-control-label"></label>
+              <input type="text" [(ngModel)]="jms && jms.jmsMessage" class="form-control" name ="jmsMessage" id="jmsMessage" #jmsMessage="ngModel">
+            </div>
           </div>
-        </div>
         </div>
         <button type="submit" class="btn btn-primary">Send JMS</button>&nbsp;&nbsp;
         <button (click)="clear()" class="btn btn-secondary">Clear</button>
       </form>
+
+    </div>
+
+
   </div>
-</div>
+<!--</div>-->
 

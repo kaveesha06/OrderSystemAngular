@@ -33,7 +33,7 @@ export class JMSComponent implements OnInit {
   }
 
   gotoUserList() {
-    this.router.navigate(['/JMS']);
+    this.router.navigate(['/users/JMS']);
   }
 
   clear(){

@@ -19,6 +19,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { ParamsComponent } from './params/params.component';
 import { JMSComponent } from './jms/jms.component';
 import { AmendComponent } from './amend/amend.component';
+import { GatewayLoadTestComponent } from './gateway-load-test/gateway-load-test.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AmendComponent } from './amend/amend.component';
     LogoutComponent,
     ParamsComponent,
     JMSComponent,
-    AmendComponent
+    AmendComponent,
+    GatewayLoadTestComponent,
+    LayoutComponent
 
   ],
   imports: [

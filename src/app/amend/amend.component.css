@@ -1,3 +1,7 @@
 #response{
   overflow-y: auto;
 }
+
+#amend-container{
+  overflow-x: hidden;
+}

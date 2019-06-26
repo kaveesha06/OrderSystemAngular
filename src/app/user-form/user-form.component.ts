@@ -62,7 +62,7 @@ export class UserFormComponent implements OnInit {
   }
 
   gotoUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/users/home']);
   }
 
   onSubmitOrdersPerTimeSlice= function(){

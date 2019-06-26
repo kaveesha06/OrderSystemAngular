@@ -14,7 +14,7 @@ export class UserService {
 
 
   constructor(private http: HttpClient, private router: Router) {
-    this.usersUrl = '/users';
+    this.usersUrl = '/users/home';
   }
 
   public findAll(): Observable<User[]> {
@@ -25,6 +25,6 @@ export class UserService {
     return this.http.post<User>(this.usersUrl, user);
   }
   public gotoUserList() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/users/home']);
   }
 }

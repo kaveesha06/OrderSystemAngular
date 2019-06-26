@@ -31,7 +31,7 @@ export class AmendComponent implements OnInit {
     this.amendOrderService.saveCancel(this.cancelOrder).subscribe(result => this.gotoUserList());
   }
   gotoUserList() {
-    this.router.navigate(['/Amend']);
+    this.router.navigate(['/users/Amend']);
   }
 
   order(){

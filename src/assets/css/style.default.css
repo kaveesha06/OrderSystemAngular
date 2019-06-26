@@ -225,9 +225,10 @@ pre {
   position: relative;
   background: #22252a;
   min-height: 100vh;
-  width: calc(100% - 240px);
+  width: 100%;
   padding: 0;
   padding-bottom: 70px;
+  overflow-x: hidden;
 }
 
 .page-content.active {
