@@ -1,0 +1,12 @@
+#gateway-form{
+  width: 40%;
+  margin-top: 0px !important;
+}
+
+#gateway-core{
+  display: flex;
+}
+
+#message-type{
+  width: 55%;
+}

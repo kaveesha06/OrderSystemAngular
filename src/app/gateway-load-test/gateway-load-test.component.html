@@ -7,7 +7,55 @@
 
   <div id="gateway-core">
 
-    <app-user-form></app-user-form>
+    <div class="card my-5" id="gateway-form">
+      <div class="card-body">
+
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+          <div class="form-group">
+            <label for="ip">IP</label>
+            <input type="text" [(ngModel)]="user && user.ip" class="form-control" id="ip"  name ="ip" (change)="onSubmit()"
+                   #ip="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="port">Port Number</label>
+            <input type="number" [(ngModel)]="user && user.port" class="form-control" id="port" value=8181 name="port" placeholder="192.168.0.50"
+                   required (change)="onSubmit()" #port="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="endpoint">No of endpoints</label>
+            <input type="number" [(ngModel)]="user && user.endpoint" class="form-control" id="endpoint" name="endpoint" placeholder="No of endpoints" value=1 (change)="onSubmit()"
+                   #endpoint="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="noOfOrders">No of Orders</label>
+            <input type="number" [(ngModel)]="user && user.noOfOrders" class="form-control" id="noOfOrders" name="noOfOrders" placeholder="No of Orders"
+                   required (change)="onSubmit()" #noOfOrders="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="orderQty">OrderQuantity</label>
+            <input type="number" [(ngModel)]="user && user.orderQty" class="form-control" id="orderQty" name="orderQty" placeholder="OrderParam Quantity"
+                   required (change)="onSubmit()" #noOfOrders="ngModel">
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div class="card my5"  id="message-type">
+      <div class="card-body">
+
+        <li>Login</li>
+        <li>Buying Power</li>
+        <li>Account Summary</li>
+        <li>Order List</li>
+        <li>Order Search</li>
+        <li>Customer Search</li>
+        <li>Portfolio Details</li>
+
+      </div>
+    </div>
+
 
   </div>
 
