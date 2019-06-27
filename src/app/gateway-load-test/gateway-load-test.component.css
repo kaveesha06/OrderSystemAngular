@@ -1,6 +1,7 @@
 #gateway-form{
   width: 40%;
   margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 #gateway-core{
@@ -9,4 +10,14 @@
 
 #message-type{
   width: 55%;
+  margin-bottom: 0px !important;
+}
+
+#message-type label {
+  float: left;
+}
+#message-type ul {
+  margin: 0;
+  list-style: none;
+  float: left;
 }

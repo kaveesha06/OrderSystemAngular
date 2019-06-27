@@ -43,7 +43,7 @@ export class UserFormComponent implements OnInit {
       this.user.port = this.users[this.users.length-1].port;
       this.user.endpoint = this.users[this.users.length-1].endpoint;
       this.user.orderQty = this.users[this.users.length-1].orderQty;
-
+      // this.user.isGWClient = this.users[this.users.length-1].isGWClient;
       this.ordersPerTimeSlice.timePeriod = 1;
       this.ordersPerTimeSlice.orderPerSlice = 700;
 

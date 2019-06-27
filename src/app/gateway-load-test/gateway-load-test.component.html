@@ -13,30 +13,31 @@
         <form (ngSubmit)="onSubmit()" #userForm="ngForm">
           <div class="form-group">
             <label for="ip">IP</label>
-            <input type="text" [(ngModel)]="user && user.ip" class="form-control" id="ip"  name ="ip" (change)="onSubmit()"
-                   #ip="ngModel">
+            <input type="text" [(ngModel)]="user && user.ip" class="form-control" id="ip"  name ="ip" placeholder="{{user.ip}}" #ip="ngModel">
           </div>
 
           <div class="form-group">
             <label for="port">Port Number</label>
-            <input type="number" [(ngModel)]="user && user.port" class="form-control" id="port" value=8181 name="port" placeholder="192.168.0.50"
-                   required (change)="onSubmit()" #port="ngModel">
+            <input type="number" [(ngModel)]="user && user.port" class="form-control" id="port" value=4545 name="port" placeholder="{{user.port}}"
+                   #port="ngModel">
           </div>
           <div class="form-group">
             <label for="endpoint">No of endpoints</label>
-            <input type="number" [(ngModel)]="user && user.endpoint" class="form-control" id="endpoint" name="endpoint" placeholder="No of endpoints" value=1 (change)="onSubmit()"
-                   #endpoint="ngModel">
+            <input type="number" [(ngModel)]="user && user.endpoint" class="form-control" id="endpoint" name="endpoint" placeholder="{{user.endpoint}}"
+                   value=1 #endpoint="ngModel">
           </div>
           <div class="form-group">
             <label for="noOfOrders">No of Orders</label>
-            <input type="number" [(ngModel)]="user && user.noOfOrders" class="form-control" id="noOfOrders" name="noOfOrders" placeholder="No of Orders"
-                   required (change)="onSubmit()" #noOfOrders="ngModel">
+            <input type="number" [(ngModel)]="user && user.noOfOrders" class="form-control" id="noOfOrders" name="noOfOrders" placeholder="{{user.noOfOrders}}"
+                   #noOfOrders="ngModel">
           </div>
           <div class="form-group">
             <label for="orderQty">OrderQuantity</label>
-            <input type="number" [(ngModel)]="user && user.orderQty" class="form-control" id="orderQty" name="orderQty" placeholder="OrderParam Quantity"
-                   required (change)="onSubmit()" #noOfOrders="ngModel">
+            <input type="number" [(ngModel)]="user && user.orderQty" class="form-control" id="orderQty" name="orderQty" placeholder="{{user.orderQty}}"
+                   #noOfOrders="ngModel">
           </div>
+
+          <button type="submit" class="btn btn-secondary">Save & Connect</button>
 
         </form>
       </div>
@@ -45,15 +46,20 @@
     <div class="card my5"  id="message-type">
       <div class="card-body">
 
-        <li>Login</li>
-        <li>Buying Power</li>
-        <li>Account Summary</li>
-        <li>Order List</li>
-        <li>Order Search</li>
-        <li>Customer Search</li>
-        <li>Portfolio Details</li>
+        <label>Message Types</label>
 
-      </div>
+        <ul>
+          <li><input type="checkbox">  Buying Power</li>
+          <li><input type="checkbox">  Account Summary</li>
+          <li><input type="checkbox">  Order List</li>
+          <li><input type="checkbox">  Order Search</li>
+          <li><input type="checkbox">  Customer Search</li>
+          <li><input type="checkbox">  Portfolio Details</li>
+        </ul>
+
+        </div>
+
+
     </div>
 
 

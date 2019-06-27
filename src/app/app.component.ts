@@ -9,7 +9,7 @@ import {ResponseService} from './response/response.service';
 export class AppComponent {
   title = 'ang-app';
   constructor(private responseService:ResponseService) {
-    this.responseService.connect().subscribe();
+    // this.responseService.connect().subscribe();
   }
 
   /** async getLastThousandResponses(){
