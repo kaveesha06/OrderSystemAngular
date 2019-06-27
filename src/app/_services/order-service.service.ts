@@ -12,7 +12,7 @@ export class OrderServiceService {
   private usersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = '/users/params';
+    this.usersUrl = 'http://localhost:8095/users/params';
   }
 
   public findAll(): Observable<OrderParam[]> {

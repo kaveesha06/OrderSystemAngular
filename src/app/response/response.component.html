@@ -28,10 +28,25 @@
     </div>
   </div>
 <button type="submit" value="Click" class="btn btn-info" (click) ="connect()">Reconnect</button>&nbsp;&nbsp;
-<button type="submit" value="Click" class="btn btn-info" (click) ="order()">Place Order</button>&nbsp;&nbsp;
+<!--<button type="submit" value="Click" class="btn btn-info" (click) ="order()">Place Order</button>&nbsp;&nbsp;-->
 <button type="submit" value="Click" class="btn btn-info" (click) ="clear()">Clear</button>&nbsp;&nbsp;
 <button type="submit" value="Click" class="btn btn-info" (click) ="stop()">Stop</button>&nbsp;&nbsp;
 <div><br></div>
+
+
+<div class="btn-group mr-3">
+  <button type="button" class="btn btn-success" (click) =sendConventionalOrders()>Place Orders</button>
+  <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+    <button class="btn btn-primary" ngbDropdownToggle (click)="sendTimedOrders()">Timed Orders</button>
+    <div class="dropdown-menu" ngbDropdownMenu>
+      <button ngbDropdownItem>One</button>
+      <button ngbDropdownItem>Two</button>
+      <button ngbDropdownItem>Four!</button>
+    </div>
+  </div>
+</div>
+
+
 
 <div id="response" style="overflow-y:scroll; height:400px;">
 <p-table [value]="messages" >

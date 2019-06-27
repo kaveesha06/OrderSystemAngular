@@ -17,6 +17,7 @@ export class ResponseComponent implements OnInit {
   subscription1: Subscription;
   subscription2: Subscription;
   subscription3: Subscription;
+  exchange_values: any = ["FromExchange","ToExchange"];
   statusText: string;
   responseCount : number;
   responseTime : any;
@@ -102,12 +103,7 @@ export class ResponseComponent implements OnInit {
     this.userService.findAll().subscribe(data => {
       this.users = data;
 
-      if(this.responseCount <= this.users[this.users.length-1].noOfOrders) {
-        this.totalNoOfOrders = this.users[this.users.length - 1].noOfOrders;
-      }
-      else{
-        this.totalNoOfOrders = this.responseCount;
-      }
+
 
     });
     this.responseService.order().subscribe(params => {
@@ -131,6 +127,12 @@ export class ResponseComponent implements OnInit {
       // this.subscription1.unsubscribe();
       // this.subscription2.unsubscribe();
       // this.subscription3.unsubscribe();
+      }
+      if(this.responseCount <= this.users[this.users.length-1].noOfOrders) {
+        this.totalNoOfOrders = this.users[this.users.length - 1].noOfOrders;
+      }
+      else{
+        this.totalNoOfOrders = this.responseCount;
       }
     });
 
@@ -172,5 +174,16 @@ export class ResponseComponent implements OnInit {
     // this.responseCount =0;
     // this.responseTime =0;
     this.totalNoOfOrders = this.responseCount;
+  }
+
+  sendTimedOrders(){
+    this.responseService.sendTimedOrders().subscribe();
+    //this.responseService.order().subscribe();
+    this.order();
+  }
+
+  sendConventionalOrders(){
+    this.responseService.sendConventionalOrders().subscribe();
+    this.order();
   }
 }
