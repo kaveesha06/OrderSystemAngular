@@ -25,6 +25,7 @@ export class ResponseComponent implements OnInit {
   percentage : any;
   messages =[];
   responseCountArray = [];
+  isGWClient:boolean=false;
   columnDefs = [
     {headerName: 'Response', field: 'response'}
     
@@ -164,7 +165,7 @@ export class ResponseComponent implements OnInit {
   }
 
   connect() {
-    this.responseService.connect().subscribe();
+    this.responseService.connect(this.isGWClient).subscribe();
   }
   stop(){
     this.responseService.stop().subscribe();

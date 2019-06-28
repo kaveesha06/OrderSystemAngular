@@ -17,6 +17,7 @@ export class GatewayLoadTestComponent implements OnInit {
   optionsMap:any;
   referenceMap:any;
   optionsMapIndex:any;
+  isGWClient:boolean = true;
 
 
   constructor(private route: ActivatedRoute, private userService: UserService, private responseService : ResponseService) {
@@ -50,7 +51,7 @@ export class GatewayLoadTestComponent implements OnInit {
   onSubmit(){
     // console.log(this.user);
     this.userService.save(this.user).subscribe(()=>{
-      this.responseService.connect().subscribe();
+      this.responseService.connect(this.isGWClient).subscribe();
     });
   }
 

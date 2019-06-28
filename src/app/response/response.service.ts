@@ -30,8 +30,8 @@ export class ResponseService {
     return this.http.get(this.urlPrefix+'/ResponseData');
  }
 
- connect(): Observable <any> {
-    return this.http.get(this.urlPrefix+'/connect');
+ connect(isGWClient:any): Observable <any> {
+    return this.http.get(this.urlPrefix+'/connect/'+isGWClient);
   }
 
   stop(): Observable <any> {
