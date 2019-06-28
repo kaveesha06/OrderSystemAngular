@@ -45,5 +45,9 @@ export class ResponseService {
     return this.http.get(this.urlPrefix+'/sendConventionalOrders');
   }
 
+  sendGWMsgType(map:any):Observable<any>{
+    return this.http.post(this.urlPrefix+'/gatewayload',map);
+  }
+
 
 }

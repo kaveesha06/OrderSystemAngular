@@ -46,19 +46,32 @@
     <div class="card my5"  id="message-type">
       <div class="card-body">
 
+
+        <!--<ul>-->
+          <!--<li><input type="checkbox">  Login</li>-->
+          <!--<li><input type="checkbox">  Buying Power</li>-->
+          <!--<li><input type="checkbox">  Account Summary</li>-->
+          <!--<li><input type="checkbox">  Order List</li>-->
+          <!--<li><input type="checkbox">  Order Search</li>-->
+          <!--<li><input type="checkbox">  Customer Search</li>-->
+          <!--<li><input type="checkbox">  Portfolio Details</li>-->
+        <!--</ul>-->
+
         <label>Message Types</label>
 
-        <ul>
-          <li><input type="checkbox">  Buying Power</li>
-          <li><input type="checkbox">  Account Summary</li>
-          <li><input type="checkbox">  Order List</li>
-          <li><input type="checkbox">  Order Search</li>
-          <li><input type="checkbox">  Customer Search</li>
-          <li><input type="checkbox">  Portfolio Details</li>
-        </ul>
-
+          <div class="form-group" id="checkbox-container">
+              <div *ngFor="let option of options">
+                    <input type="checkbox"
+                           name="options"
+                           value="{{option}}"
+                           [checked]="options.indexOf(option) < 0"
+                           (change)="updateCheckedOptions(option, $event)"/>
+                    {{option}}
+                </div>
+          </div>
         </div>
 
+      <button id="send-btn" (click)="sendReq()" class="btn btn-secondary">Send Requests</button>
 
     </div>
 

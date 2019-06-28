@@ -21,3 +21,14 @@
   list-style: none;
   float: left;
 }
+
+#checkbox-container{
+  margin-left: 150px;
+}
+
+#send-btn{
+  position: absolute;
+  left: 72%;
+  top: 89%;
+  width: 25%;
+}
