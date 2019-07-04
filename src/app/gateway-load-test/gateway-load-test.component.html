@@ -10,32 +10,43 @@
     <div class="card my-5" id="gateway-form">
       <div class="card-body">
 
-        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <form (ngSubmit)="onSubmit()" >
           <div class="form-group">
             <label for="ip">IP</label>
-            <input type="text" [(ngModel)]="user && user.ip" class="form-control" id="ip"  name ="ip" placeholder="{{user.ip}}" #ip="ngModel">
+            <input type="text" [(ngModel)]="gwUser.ip" class="form-control" id="ip"  name ="ip" placeholder="{{gwUser.ip}}">
           </div>
 
           <div class="form-group">
             <label for="port">Port Number</label>
-            <input type="number" [(ngModel)]="user && user.port" class="form-control" id="port" value=4545 name="port" placeholder="{{user.port}}"
-                   #port="ngModel">
+            <input type="number" [(ngModel)]="gwUser.port" class="form-control" id="port" value=4545 name="port"
+                   placeholder="{{gwUser.port}}" >
           </div>
           <div class="form-group">
-            <label for="endpoint">No of endpoints</label>
-            <input type="number" [(ngModel)]="user && user.endpoint" class="form-control" id="endpoint" name="endpoint" placeholder="{{user.endpoint}}"
-                   value=1 #endpoint="ngModel">
+            <label for="endpoint">No of endpoints (N/A for login messages)</label>
+            <input type="number" [(ngModel)]="gwUser.endpoint" class="form-control" id="endpoint" name="endpoint"
+                   placeholder="{{gwUser.endpoint}}">
           </div>
           <div class="form-group">
-            <label for="noOfOrders">No of Orders</label>
-            <input type="number" [(ngModel)]="user && user.noOfOrders" class="form-control" id="noOfOrders" name="noOfOrders" placeholder="{{user.noOfOrders}}"
-                   #noOfOrders="ngModel">
+            <label for="repeatCount">Repeat Count</label>
+            <input type="number" [(ngModel)]="gwUser.repeatCount" class="form-control" id="repeatCount" name="repeatCount"
+                   placeholder="{{gwUser.repeatCount}}" >
           </div>
-          <div class="form-group">
-            <label for="orderQty">OrderQuantity</label>
-            <input type="number" [(ngModel)]="user && user.orderQty" class="form-control" id="orderQty" name="orderQty" placeholder="{{user.orderQty}}"
-                   #noOfOrders="ngModel">
+          <div id="time-config">
+            <div class="form-group">
+              <label for="period">Periodically</label>
+              <br>
+              <label class="switch">
+                <input type="checkbox" id="period" name="period" [(ngModel)]="gwUser.periodically"  (change)="toggleVisibility($event)">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="form-group" id="ordersPerSecContainer" >
+              <label for="ordersPerSec">Orders per Second</label>
+              <input type="number" [(ngModel)]="gwUser.ordersPerSec" class="form-control" id="ordersPerSec" name="ordersPerSec"
+                     placeholder="{{gwUser.ordersPerSec}}" [disabled]="!isPeriodic" >
+            </div>
           </div>
+
 
           <button type="submit" class="btn btn-secondary">Save & Connect</button>
 

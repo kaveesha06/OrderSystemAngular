@@ -11,23 +11,25 @@ import {ResponseService} from "../response/response.service";
 })
 export class GatewayLoadTestComponent implements OnInit {
 
-  user: User;
-  users: User[];
+  gwUser: GatewayUser;
+  gwUsers: GatewayUser[];
   options:any;
   optionsMap:any;
   referenceMap:any;
   optionsMapIndex:any;
   isGWClient:boolean = true;
+  isPeriodic:boolean = false;
 
 
   constructor(private route: ActivatedRoute, private userService: UserService, private responseService : ResponseService) {
-    this.user = new User();
+    this.gwUser = new GatewayUser();
 
-    this.user.noOfOrders = 100;
-    this.user.ip = "192.168.0.50";
-    this.user.port = 9080;
-    this.user.endpoint = 10;
-    this.user.orderQty = 10;
+    this.gwUser.ip = "192.168.0.50";
+    this.gwUser.port = 9080;
+    this.gwUser.endpoint = 10;
+    this.gwUser.repeatCount = 1;
+    this.gwUser.periodically = this.isPeriodic;
+    this.gwUser.ordersPerSec = 0;
 
     this.options = ["Login","Buying Power","Account Summary","Order List","Order Search","Customer Search","Portfolio Details"];
     this.optionsMap = {"Login":false,"Buying Power":false,"Account Summary":false,"Order List":false,"Order Search":false,
@@ -50,8 +52,9 @@ export class GatewayLoadTestComponent implements OnInit {
 
   onSubmit(){
     // console.log(this.user);
-    this.userService.save(this.user).subscribe(()=>{
-      this.responseService.connect(this.isGWClient).subscribe();
+    this.userService.saveGwUser(this.gwUser).subscribe(()=>{
+      console.log(this.gwUser);
+      // this.responseService.connect(this.isGWClient).subscribe();
     });
   }
 
@@ -74,7 +77,20 @@ export class GatewayLoadTestComponent implements OnInit {
     this.optionsMap[option] = event.target.checked;
   }
 
+  toggleVisibility(e){
+    this.isPeriodic= e.target.checked;
+  }
 
 
 
+
+}
+
+export class GatewayUser{
+  ip:string;
+  port:number;
+  endpoint:number;
+  repeatCount:number;
+  periodically:boolean;
+  ordersPerSec:number;
 }
