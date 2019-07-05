@@ -37,10 +37,34 @@
   display: inline-flex;
 }
 
-#ordersPerSecContainer{
+#requestsPerSecContainer{
   margin-left: 106px;
 }
 
+#timeConstraintContainer{
+  margin-left: 70px;
+}
+
+#timeInputContainer{
+  display: inline-flex;
+}
+
+#timeConstraintHour{
+  width: 40%;
+}
+
+#timeConstraintMin{
+  width: 40%;
+}
+
+#hourLabel{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#minuteLabel{
+  margin-left: 5%;
+}
 
 .switch {
   position: relative;

@@ -29,7 +29,9 @@ export class GatewayLoadTestComponent implements OnInit {
     this.gwUser.endpoint = 10;
     this.gwUser.repeatCount = 1;
     this.gwUser.periodically = this.isPeriodic;
-    this.gwUser.ordersPerSec = 0;
+    this.gwUser.requestsPerSec = 0;
+    this.gwUser.timeConstraintHour = 1;
+    this.gwUser.timeConstraintMin = 0;
 
     this.options = ["Login","Buying Power","Account Summary","Order List","Order Search","Customer Search","Portfolio Details"];
     this.optionsMap = {"Login":false,"Buying Power":false,"Account Summary":false,"Order List":false,"Order Search":false,
@@ -92,5 +94,7 @@ export class GatewayUser{
   endpoint:number;
   repeatCount:number;
   periodically:boolean;
-  ordersPerSec:number;
+  requestsPerSec:number;
+  timeConstraintHour:number;
+  timeConstraintMin:number
 }

@@ -40,10 +40,22 @@
                 <span class="slider round"></span>
               </label>
             </div>
-            <div class="form-group" id="ordersPerSecContainer" >
-              <label for="ordersPerSec">Requests per Second</label>
-              <input type="number" [(ngModel)]="gwUser.ordersPerSec" class="form-control" id="ordersPerSec" name="ordersPerSec"
-                     placeholder="{{gwUser.ordersPerSec}}" [disabled]="!isPeriodic" >
+            <div class="form-group" id="requestsPerSecContainer" *ngIf="isPeriodic" >
+              <label for="requestsPerSec">Requests per Second</label>
+              <input type="number" [(ngModel)]="gwUser.requestsPerSec" class="form-control" id="requestsPerSec" name="requestsPerSec"
+                     placeholder="{{gwUser.requestsPerSec}}" >
+            </div>
+            <div class="form-group" id="timeConstraintContainer" *ngIf="!isPeriodic" >
+              <label for="timeInputContainer">Time Constraint</label>
+              <div id="timeInputContainer">
+                <input type="number" [(ngModel)]="gwUser.timeConstraintHour" class="form-control" id="timeConstraintHour" min="0" max="24"
+                       name="timeConstraintHour" placeholder="{{gwUser.timeConstraintHour}}" >
+                <label for="timeConstraintHour" id="hourLabel">Hours</label>
+                <input type="number" [(ngModel)]="gwUser.timeConstraintMin" class="form-control" id="timeConstraintMin" min="0" max="59"
+                       name="timeConstraintMin" placeholder="{{gwUser.timeConstraintMin}}" >
+                <label for="timeConstraintMin" id="minuteLabel">Minutes</label>
+              </div>
+
             </div>
           </div>
 
