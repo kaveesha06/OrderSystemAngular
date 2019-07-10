@@ -3,6 +3,7 @@ import {User} from "../_model/user";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../_services/user-service.service";
 import {ResponseService} from "../response/response.service";
+import {timeout} from "rxjs/operators";
 
 @Component({
   selector: 'app-gateway-load-test',
@@ -17,8 +18,6 @@ export class GatewayLoadTestComponent implements OnInit {
   optionsMap:any;
   referenceMap:any;
   optionsMapIndex:any;
-  isGWClient:boolean = true;
-  isPeriodic:boolean = false;
 
 
   constructor(private route: ActivatedRoute, private userService: UserService, private responseService : ResponseService) {
@@ -26,12 +25,15 @@ export class GatewayLoadTestComponent implements OnInit {
 
     this.gwUser.ip = "192.168.0.50";
     this.gwUser.port = 9080;
-    this.gwUser.endpoint = 10;
+    this.gwUser.endpoint = 1;
     this.gwUser.repeatCount = 1;
-    this.gwUser.periodically = this.isPeriodic;
+    this.gwUser.sendFileContent = true;
     this.gwUser.requestsPerSec = 0;
-    this.gwUser.timeConstraintHour = 1;
-    this.gwUser.timeConstraintMin = 0;
+    this.gwUser.timeConstraintMin = 60;
+    this.gwUser.isRated = false;
+    this.gwUser.isTimeBounded = true;
+    this.gwUser.msgCount = 1000;
+    this.gwUser.isCountEnabled = false;
 
     this.options = ["Login","Buying Power","Account Summary","Order List","Order Search","Customer Search","Portfolio Details"];
     this.optionsMap = {"Login":false,"Buying Power":false,"Account Summary":false,"Order List":false,"Order Search":false,
@@ -79,11 +81,23 @@ export class GatewayLoadTestComponent implements OnInit {
     this.optionsMap[option] = event.target.checked;
   }
 
-  toggleVisibility(e){
-    this.isPeriodic= e.target.checked;
+  toggleSendFileContent(e){
+    this.gwUser.sendFileContent = e.target.checked;
   }
 
+  toggleTimeBound(e){
+    this.gwUser.isTimeBounded = e.target.checked;
+    this.gwUser.isCountEnabled = !(e.target.checked);
+  }
 
+  toggleReqRate(e){
+    this.gwUser.isRated = e.target.checked;
+  }
+
+  toggleMsgCount(e){
+    this.gwUser.isTimeBounded = !(e.target.checked);
+    this.gwUser.isCountEnabled = e.target.checked;
+  }
 
 
 }
@@ -93,8 +107,11 @@ export class GatewayUser{
   port:number;
   endpoint:number;
   repeatCount:number;
-  periodically:boolean;
+  sendFileContent:boolean;
+  isTimeBounded:boolean;
+  isRated:boolean;
+  isCountEnabled:boolean;
   requestsPerSec:number;
-  timeConstraintHour:number;
   timeConstraintMin:number
+  msgCount:number;
 }

@@ -37,8 +37,16 @@
   display: inline-flex;
 }
 
+#number-of-messages-config{
+  display: inline-flex;
+}
+
 #requestsPerSecContainer{
-  margin-left: 106px;
+  margin-left: 70px;
+}
+
+#requestsPerSec{
+  width: 175px;
 }
 
 #timeConstraintContainer{
@@ -49,12 +57,8 @@
   display: inline-flex;
 }
 
-#timeConstraintHour{
-  width: 40%;
-}
-
 #timeConstraintMin{
-  width: 40%;
+  width: 175px;
 }
 
 #hourLabel{
@@ -64,6 +68,46 @@
 
 #minuteLabel{
   margin-left: 5%;
+}
+
+#timeBoundedLabel{
+  width: 100px;
+}
+
+#msg-rate-config{
+  display: inline-flex;
+}
+
+#msgRateLabel{
+  width: 100px;
+}
+
+#fileSendingContainer{
+  display: inline-flex;
+}
+
+#fileContentSlider{
+  display: grid;
+}
+
+#repeatCountContainer{
+  margin-left: 51px;
+}
+
+#repeatCount{
+  width: 175px;
+}
+
+#connectBtnContainer{
+  margin-left: 65%;
+}
+
+#msgCountContainer{
+  margin-left: 20px;
+}
+
+#msgCountInput{
+  width: 175px;
 }
 
 .switch {

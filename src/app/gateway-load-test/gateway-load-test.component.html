@@ -23,44 +23,86 @@
           </div>
           <div class="form-group">
             <label for="endpoint">No of endpoints (N/A for login messages)</label>
-            <input type="number" [(ngModel)]="gwUser.endpoint" class="form-control" id="endpoint" name="endpoint"
+            <input type="number" [(ngModel)]="gwUser.endpoint" class="form-control" id="endpoint" name="endpoint" min="1"
                    placeholder="{{gwUser.endpoint}}">
           </div>
-          <div class="form-group">
-            <label for="repeatCount">Repeat Count</label>
-            <input type="number" [(ngModel)]="gwUser.repeatCount" class="form-control" id="repeatCount" name="repeatCount"
-                   placeholder="{{gwUser.repeatCount}}" >
-          </div>
-          <div id="time-config">
-            <div class="form-group">
-              <label for="period">Periodically</label>
-              <br>
-              <label class="switch">
-                <input type="checkbox" id="period" name="period" [(ngModel)]="gwUser.periodically"  (change)="toggleVisibility($event)">
+
+          <div id="fileSendingContainer" class="form-group">
+            <div id="fileContentSlider">
+              <label for="fileSender">Send File Content</label>
+              <label  class="switch">
+                <input type="checkbox" id="fileSender" name="fileSender" [(ngModel)]="gwUser.sendFileContent" (change)="toggleSendFileContent($event)">
                 <span class="slider round"></span>
               </label>
             </div>
-            <div class="form-group" id="requestsPerSecContainer" *ngIf="isPeriodic" >
-              <label for="requestsPerSec">Requests per Second</label>
-              <input type="number" [(ngModel)]="gwUser.requestsPerSec" class="form-control" id="requestsPerSec" name="requestsPerSec"
-                     placeholder="{{gwUser.requestsPerSec}}" >
-            </div>
-            <div class="form-group" id="timeConstraintContainer" *ngIf="!isPeriodic" >
-              <label for="timeInputContainer">Time Constraint</label>
-              <div id="timeInputContainer">
-                <input type="number" [(ngModel)]="gwUser.timeConstraintHour" class="form-control" id="timeConstraintHour" min="0" max="24"
-                       name="timeConstraintHour" placeholder="{{gwUser.timeConstraintHour}}" >
-                <label for="timeConstraintHour" id="hourLabel">Hours</label>
-                <input type="number" [(ngModel)]="gwUser.timeConstraintMin" class="form-control" id="timeConstraintMin" min="0" max="59"
-                       name="timeConstraintMin" placeholder="{{gwUser.timeConstraintMin}}" >
-                <label for="timeConstraintMin" id="minuteLabel">Minutes</label>
-              </div>
 
+            <div class="form-group" id="repeatCountContainer" >
+              <label for="repeatCount">Repeat Count</label>
+              <input type="number" [(ngModel)]="gwUser.repeatCount" class="form-control" id="repeatCount" name="repeatCount" min="1"
+                     placeholder="{{gwUser.repeatCount}}" [disabled]="!gwUser.sendFileContent" >
             </div>
           </div>
 
 
-          <button type="submit" class="btn btn-secondary">Save & Connect</button>
+          <div id="msg-rate-config">
+            <div class="form-group">
+              <label id="msgRateLabel" for="msgRate">Request Rate</label>
+              <br>
+              <label class="switch">
+                <input type="checkbox" id="msgRate" name="msgRate" [(ngModel)]="gwUser.isRated"  (change)="toggleReqRate($event)">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="form-group" id="msgRateContainer">
+              <div class="form-group" id="requestsPerSecContainer"  >
+                <label for="requestsPerSec">Requests per Second</label>
+                <input type="number" [(ngModel)]="gwUser.requestsPerSec" class="form-control" id="requestsPerSec" name="requestsPerSec" min="1"
+                       placeholder="{{gwUser.requestsPerSec}}" [disabled]="!gwUser.isRated" >
+              </div>
+            </div>
+          </div>
+
+
+          <div id="time-config"  [ngClass]="!gwUser.sendFileContent ?'scale-in-top' :'scale-out-top' "  *ngIf="!gwUser.sendFileContent">
+            <div class="form-group">
+              <label id="timeBoundedLabel" for="timeBounded">Time Bounded</label>
+              <br>
+              <label class="switch">
+                <input type="checkbox" id="timeBounded" name="timeBounded" [(ngModel)]="gwUser.isTimeBounded"  (change)="toggleTimeBound($event)">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="form-group" id="timeConstraintContainer">
+              <label for="timeInputContainer">Time Constraint (Minutes)</label>
+              <div id="timeInputContainer">
+                <!--<input type="number" [(ngModel)]="gwUser.timeConstraintHour" class="form-control" id="timeConstraintHour" min="0" max="24"-->
+                <!--name="timeConstraintHour" placeholder="{{gwUser.timeConstraintHour}}" [disabled]="!gwUser.isTimeBounded"  >-->
+                <!--<label for="timeConstraintHour" id="hourLabel">Hours</label>-->
+                <input type="number" [(ngModel)]="gwUser.timeConstraintMin" class="form-control" id="timeConstraintMin" min="-1"
+                       name="timeConstraintMin" placeholder="{{gwUser.timeConstraintMin}}" [disabled]="!gwUser.isTimeBounded"  >
+              </div>
+            </div>
+          </div>
+
+          <div id="number-of-messages-config"  [ngClass]="!gwUser.sendFileContent ?'scale-in-top' :'scale-out-top' " *ngIf="!gwUser.sendFileContent">
+            <div class="form-group">
+              <label id="msgCountLabel" for="msgCount">Enable Message Count</label>
+              <br>
+              <label class="switch">
+                <input type="checkbox" id="msgCount" name="msgCount" [(ngModel)]="gwUser.isCountEnabled"  (change)="toggleMsgCount($event)">
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="form-group" id="msgCountContainer">
+                <label for="msgCountInput">Message Count</label>
+                <input type="number" [(ngModel)]="gwUser.msgCount" class="form-control" id="msgCountInput" name="msgCountInput" min="1"
+                       placeholder="{{gwUser.msgCount}}" [disabled]="!gwUser.isCountEnabled" >
+            </div>
+          </div>
+
+          <div id="connectBtnContainer">
+            <button type="submit" class="btn btn-secondary">Save & Connect</button>
+          </div>
 
         </form>
       </div>
