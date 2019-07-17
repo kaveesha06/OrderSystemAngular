@@ -37,9 +37,9 @@
             </div>
 
             <div class="form-group" id="repeatCountContainer" >
-              <label for="repeatCount">Repeat Count</label>
-              <input type="number" [(ngModel)]="gwUser.repeatCount" class="form-control" id="repeatCount" name="repeatCount" min="1"
-                     placeholder="{{gwUser.repeatCount}}" [disabled]="!gwUser.sendFileContent" >
+              <label for="repeatCount" id="repeatCountID" data-tooltip1="The number of times to repeat the content of the file">Repeat Count</label>
+              <input type="number"  [(ngModel)]="gwUser.repeatCount" class="form-control" id="repeatCount" name="repeatCount" min="1"
+                     placeholder="{{gwUser.repeatCount}}" [disabled]="!gwUser.sendFileContent"  >
             </div>
           </div>
 
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group" id="msgRateContainer">
               <div class="form-group" id="requestsPerSecContainer"  >
-                <label for="requestsPerSec">Requests per Second</label>
+                <label for="requestsPerSec" id="reqPerSecID" data-tooltip2="The total number of requests to be sent per second">Requests per Second</label>
                 <input type="number" [(ngModel)]="gwUser.requestsPerSec" class="form-control" id="requestsPerSec" name="requestsPerSec" min="1"
                        placeholder="{{gwUser.requestsPerSec}}" [disabled]="!gwUser.isRated" >
               </div>
@@ -73,7 +73,8 @@
               </label>
             </div>
             <div class="form-group" id="timeConstraintContainer">
-              <label for="timeInputContainer">Time Constraint (Minutes)</label>
+              <label for="timeInputContainer" id="timeConstraintID" data-tooltip3="Time limit for sending requests, -1 for unlimited">
+                Time limit (Minutes)</label>
               <div id="timeInputContainer">
                 <!--<input type="number" [(ngModel)]="gwUser.timeConstraintHour" class="form-control" id="timeConstraintHour" min="0" max="24"-->
                 <!--name="timeConstraintHour" placeholder="{{gwUser.timeConstraintHour}}" [disabled]="!gwUser.isTimeBounded"  >-->
@@ -94,7 +95,8 @@
               </label>
             </div>
             <div class="form-group" id="msgCountContainer">
-                <label for="msgCountInput">Message Count</label>
+                <label for="msgCountInput" id="messageCountID" data-tooltip4="Number of messages to be sent">
+                  Message Count</label>
                 <input type="number" [(ngModel)]="gwUser.msgCount" class="form-control" id="msgCountInput" name="msgCountInput" min="1"
                        placeholder="{{gwUser.msgCount}}" [disabled]="!gwUser.isCountEnabled" >
             </div>
@@ -131,12 +133,13 @@
                            value="{{option}}"
                            [checked]="options.indexOf(option) < 0"
                            (change)="updateCheckedOptions(option, $event)"/>
-                    {{option}}
+                          {{option}} => {{reqCount[options.indexOf(option)]}}
                 </div>
           </div>
         </div>
 
-      <button id="send-btn" (click)="sendReq()" class="btn btn-secondary">Send Requests</button>
+      <button id="send-btn" (click)="sendReq()" class="btn btn-secondary" [disabled]="!readyToSend">Send Requests</button>
+      <button id="kill-btn" (click)="stopReq()" class="btn btn-secondary" [disabled]="!readyToSend">Stop</button>
 
     </div>
 

@@ -18,6 +18,8 @@ export class GatewayLoadTestComponent implements OnInit {
   optionsMap:any;
   referenceMap:any;
   optionsMapIndex:any;
+  readyToSend:boolean = false;
+  reqCount:any[] = [];
 
 
   constructor(private route: ActivatedRoute, private userService: UserService, private responseService : ResponseService) {
@@ -28,7 +30,7 @@ export class GatewayLoadTestComponent implements OnInit {
     this.gwUser.endpoint = 1;
     this.gwUser.repeatCount = 1;
     this.gwUser.sendFileContent = true;
-    this.gwUser.requestsPerSec = 0;
+    this.gwUser.requestsPerSec = 1;
     this.gwUser.timeConstraintMin = 60;
     this.gwUser.isRated = false;
     this.gwUser.isTimeBounded = true;
@@ -56,8 +58,13 @@ export class GatewayLoadTestComponent implements OnInit {
 
   onSubmit(){
     // console.log(this.user);
-    this.userService.saveGwUser(this.gwUser).subscribe(()=>{
+    this.userService.saveGwUser(this.gwUser).subscribe((data)=>{
       console.log(this.gwUser);
+      console.log(data);
+      if(data['readyState']){
+        this.readyToSend = true;
+      }
+      this.reqCount[0] = data['loginReqBeanList'];
       // this.responseService.connect(this.isGWClient).subscribe();
     });
   }
@@ -67,6 +74,9 @@ export class GatewayLoadTestComponent implements OnInit {
     console.log(this.optionsMapIndex);
     this.responseService.sendGWMsgType(this.optionsMapIndex).subscribe();
     this.optionsMapIndex = {1:false,2:false,3:false,4:false,5:false,6:false,7:false};
+  }
+  stopReq(){
+    this.responseService.sendKillMsg().subscribe();
   }
 
   updateOptions() {

@@ -28,9 +28,16 @@
 
 #send-btn{
   position: absolute;
-  left: 72%;
+  left: 55%;
   top: 89%;
   width: 25%;
+}
+
+#kill-btn{
+  position: absolute;
+  left: 85%;
+  top: 89%;
+  width: 10%;
 }
 
 #time-config{
@@ -172,4 +179,50 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+#repeatCountID:hover:after {
+  content: attr(data-tooltip1);
+  position: absolute;
+  /*left: 100%;*/
+  margin-left: 5px;
+  text-align: justify;
+  font-size: xx-small;
+  background: rgba(0,0,0,0.54);
+  padding: 12px;
+  border-radius: 3px;
+}
 
+#reqPerSecID:hover:after {
+  content: attr(data-tooltip2);
+  position: absolute;
+  /*left: 100%;*/
+  margin-left: 5px;
+  text-align: justify;
+  font-size: xx-small;
+  background: rgba(0,0,0,0.54);
+  padding: 12px;
+  border-radius: 3px;
+}
+
+#timeConstraintID:hover:after {
+  content: attr(data-tooltip3);
+  position: absolute;
+  /*left: 100%;*/
+  margin-left: 5px;
+  text-align: justify;
+  font-size: xx-small;
+  background: rgba(0,0,0,0.54);
+  padding: 12px;
+  border-radius: 3px;
+}
+
+#messageCountID:hover:after {
+  content: attr(data-tooltip4);
+  position: absolute;
+  /*left: 100%;*/
+  margin-left: 5px;
+  text-align: justify;
+  font-size: xx-small;
+  background: rgba(0,0,0,0.54);
+  padding: 12px;
+  border-radius: 3px;
+}

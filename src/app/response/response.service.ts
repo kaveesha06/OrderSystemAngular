@@ -49,5 +49,9 @@ export class ResponseService {
     return this.http.post(this.urlPrefix+'/gatewayload',map);
   }
 
+  sendKillMsg():Observable<any>{
+    return this.http.get(this.urlPrefix+'/stopsending')
+  }
+
 
 }
